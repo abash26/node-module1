@@ -1,15 +1,15 @@
-const { Transform } = require('stream')
+import { Transform } from 'stream';
 
 const dataTransform = new Transform({
   transform(chunk, encoding, callback) {
     this.push(
       chunk.toString().replace('\n', '').split('').reverse().join('') + '\n'
-    )
-    callback()
+    );
+    callback();
   },
-})
+});
 
-process.stdin.pipe(dataTransform).pipe(process.stdout)
+process.stdin.pipe(dataTransform).pipe(process.stdout);
 
 // Option 2
 /* const readline = require('readline')
